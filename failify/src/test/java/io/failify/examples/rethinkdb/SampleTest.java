@@ -6,7 +6,7 @@ import com.rethinkdb.net.Cursor;
 import io.failify.FailifyRunner;
 import io.failify.dsl.entities.Deployment;
 import io.failify.dsl.entities.PortType;
-import io.failify.execution.NetPart;
+import io.failify.exceptions.RuntimeEngineException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -39,7 +39,7 @@ public class SampleTest {
     }
 
     @Test
-    public void sampleTest() {
+    public void sampleTest() throws RuntimeEngineException {
         Connection conn = r.connection().hostname(runner.runtime().ip("n1")).port(runner.runtime()
                 .portMapping("n1", 28015, PortType.TCP)).connect();
 

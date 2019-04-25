@@ -20,7 +20,7 @@ public class FailifyHelper {
 
         for (int i = 2; i <= numOfNodes; i++) {
             builder.withNode("n" + i, "rethinkdb")
-                .startCommand("rethinkdb --join n1:29015 --bind all --log-file /rethinkdb.log").and();
+                .startCommand("/rethinkdb/rethinkdb --join n1:29015 --bind all --log-file /rethinkdb.log").and();
         }
 
         return builder.build();
