@@ -1,5 +1,3 @@
-out/
-
 # Eclipse
 .classpath
 .project
@@ -14,12 +12,10 @@ out/
 .DS_Store
 
 # Maven
-log/
-target/
+failify/**/log/
+failify/**/target/
 
 .Failify*
 .failify*
-
-docs/_build
 
 dependency-reduced-pom.xml
