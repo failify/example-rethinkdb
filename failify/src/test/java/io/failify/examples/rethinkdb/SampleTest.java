@@ -40,8 +40,7 @@ public class SampleTest {
 
     @Test
     public void sampleTest() throws RuntimeEngineException {
-        Connection conn = r.connection().hostname(runner.runtime().ip("n1")).port(runner.runtime()
-                .portMapping("n1", 28015, PortType.TCP)).connect();
+        Connection conn = FailifyHelper.getConnection(runner);
 
 //        Example of how to impose a network partition
 //        NetPart netPart = NetPart.partitions("n1", "n2,n3").build();
