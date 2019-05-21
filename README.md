@@ -1,3 +1,6 @@
+Important: This repo contains large files and requires 
+[git-lfs](https://git-lfs.github.com/) to be installed 
+
 This repo contains sample [Failify](https://failify.io) test cases for RethinkDB. To make things easier for illustration
 purposes, the build folder from v2.3.6 of RethinkDB built on Debian Jessie is included in the repo so anyone who wants to
 try the test cases is not required to build RethinkDB from scratch.
