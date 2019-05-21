@@ -27,7 +27,7 @@ public class SampleTest {
         Deployment deployment = FailifyHelper.getDeployment(3);
         runner = FailifyRunner.run(deployment);
         // Wait for the cluster to start up
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         logger.info("The cluster is UP!");
     }
 
