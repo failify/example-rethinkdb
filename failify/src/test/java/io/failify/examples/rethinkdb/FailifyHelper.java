@@ -13,16 +13,13 @@ public class FailifyHelper {
     public static final RethinkDB r = RethinkDB.r;
 
     public static Deployment getDeployment(int numOfNodes) {
-        Deployment.Builder builder = Deployment.builder("example-rethinkdb")
-                .withService("rethinkdb")
-                    .applicationPath("../build-2.3.6-jessie/release", "/rethinkdb")
-                    .startCommand("/rethinkdb/rethinkdb --bind all --log-file /rethinkdb.log")
-                    .dockerImageName("failify/example-rethinkdb").dockerFileAddress("docker/Dockerfile", false)
-                    .logFile("/rethinkdb.log").and()
-                .withNode("n1", "rethinkdb").tcpPort(28015).and();
-        for (int i = 2; i <= numOfNodes; i++) builder.withNode("n" + i, "rethinkdb")
-                .startCommand("/rethinkdb/rethinkdb --join n1:29015 --bind all --log-file /rethinkdb.log").and();
-        return builder.build();
+        return Deployment.builder("example-rethinkdb")
+            .withService("rethinkdb")
+                .appPath("../build-2.3.6-jessie/release", "/rethinkdb")
+                .startCmd("/rethinkdb/rethinkdb --join n1:29015 --bind all --log-file /rethinkdb.log")
+                .dockerImgName("failify/example-rethinkdb").dockerFileAddr("docker/Dockerfile", false)
+                .logFile("/rethinkdb.log").and().nodeInstances(numOfNodes, "n", "rethinkdb", false)
+            .node("n1").tcpPort(28015).startCmd("/rethinkdb/rethinkdb --bind all --log-file /rethinkdb.log").and().build();
     }
 
     public static Connection getConnection(FailifyRunner runner) {
