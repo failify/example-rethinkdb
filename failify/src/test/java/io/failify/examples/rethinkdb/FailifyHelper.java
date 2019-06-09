@@ -17,7 +17,7 @@ public class FailifyHelper {
             .withService("rethinkdb")
                 .appPath("../build-2.3.6-jessie/release", "/rethinkdb")
                 .startCmd("/rethinkdb/rethinkdb --join n1:29015 --bind all --log-file /rethinkdb.log")
-                .dockerImgName("failify/example-rethinkdb").dockerFileAddr("docker/Dockerfile", false)
+                .dockerImg("failify/example-rethinkdb").dockerFile("docker/Dockerfile", false)
                 .logFile("/rethinkdb.log").and().nodeInstances(numOfNodes, "n", "rethinkdb", false)
             .node("n1").tcpPort(28015).startCmd("/rethinkdb/rethinkdb --bind all --log-file /rethinkdb.log").and().build();
     }
